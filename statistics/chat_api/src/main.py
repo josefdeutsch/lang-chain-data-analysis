@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/")
+@app.get("/helloword")
 def read_root():
     print("Hello from FastAPI inside Docker!")
     return {"message": "Hello World"}
@@ -11,3 +11,4 @@ def read_root():
 def read_item(item_id: int, q: str = None):
     print(f"Fetching item with id: {item_id} and query: {q}")
     return {"item_id": item_id, "q": q}
+

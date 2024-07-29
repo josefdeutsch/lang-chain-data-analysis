@@ -1,12 +1,28 @@
 version: '3.8'
 
 services:
-  chatbot_api:
+  chat_api:
     build:
       context: ./chat_api
     env_file:
       - .env
-    depends_on:
-      - some_other_service # If there are other services the chatbot_api depends on, list them here.
     ports:
       - "8000:8000"
+    networks:
+      - chatbot-network
+
+  chat_bot:
+    build:
+      context: ./chat_bot
+    env_file:
+      - .env
+    depends_on:
+      - chat_api
+    ports:
+      - "8501:8501"
+    networks:
+      - chatbot-network
+
+networks:
+  chatbot-network:
+    driver: bridge
