@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  chatbot_api:
+    build:
+      context: ./chat_api
+    env_file:
+      - .env
+    depends_on:
+      - some_other_service # If there are other services the chatbot_api depends on, list them here.
+    ports:
+      - "8000:8000"

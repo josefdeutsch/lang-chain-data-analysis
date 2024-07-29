@@ -1,0 +1,10 @@
+[project]
+name = "chat_api"
+version = "0.1"
+dependencies = [
+    "fastapi",
+    "uvicorn"
+]
+
+[project.optional-dependencies]
+dev = ["black", "flake8"]
