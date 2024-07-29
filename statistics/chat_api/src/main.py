@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/helloword")
+@app.get("/helloworld")
 def read_root():
     print("Hello from FastAPI inside Docker!")
     return {"message": "Hello World"}
