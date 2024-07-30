@@ -1,9 +1,10 @@
 [project]
-name = "chat_api"
+name = "analytics"
 version = "0.1"
 dependencies = [
     "python-dotenv",
-    "requests==2.31.0",
+    "statsmodels",
+    "numpy",
     "pydantic",
     "asyncio",
     "fastapi",

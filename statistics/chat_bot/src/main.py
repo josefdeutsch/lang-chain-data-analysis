@@ -1,8 +1,12 @@
 import os
 import requests
 import streamlit as st
+from dotenv import load_dotenv
 
-CHATBOT_URL = os.getenv("CHATBOT_URL", "http://chat_api:8000/chat")
+# Load environment variables from .env file
+load_dotenv()
+
+CHAT_API = os.getenv("CHAT_API")
 
 st.title("Hospital System Chatbot")
 st.info("Ask me questions about patients, visits, insurance payers, hospitals, physicians, reviews, and wait times!")
@@ -11,7 +15,7 @@ st.info("Ask me questions about patients, visits, insurance payers, hospitals, p
 message_to_send = {"message": "A message from the chatbot!"}
 
 # Send POST request
-response = requests.post(CHATBOT_URL, json=message_to_send)
+response = requests.post(CHAT_API, json=message_to_send)
 
 if response.status_code == 200:
     st.write(response.json())

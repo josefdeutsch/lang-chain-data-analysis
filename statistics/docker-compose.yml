@@ -1,11 +1,23 @@
 version: '3.8'
 
 services:
+  analytics:
+    build:
+      context: ./analytics
+    env_file:
+      - .env
+    ports:
+      - "8001:8001"
+    networks:
+      - chatbot-network
+
   chat_api:
     build:
       context: ./chat_api
     env_file:
       - .env
+    depends_on:
+      - analytics  
     ports:
       - "8000:8000"
     networks:

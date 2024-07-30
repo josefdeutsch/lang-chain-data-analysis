@@ -1,0 +1,12 @@
+# chatbot_api/Dockerfile
+
+FROM python:3.9.13-slim
+
+WORKDIR /app
+COPY ./src/ /app
+
+COPY ./pyproject.toml /app/pyproject.toml
+RUN pip install /app/.
+
+EXPOSE 8001
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8001"]
