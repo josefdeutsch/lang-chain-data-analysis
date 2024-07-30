@@ -1,14 +1,27 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 
-app = FastAPI()
+app = FastAPI(
+    title="Simple Chatbot",
+    description="A simple chatbot server with a POST endpoint",
+)
 
-@app.get("/helloworld")
-def read_root():
-    print("Hello from FastAPI inside Docker!")
-    return {"message": "Hello World"}
+class ChatMessage(BaseModel):
+    message: str
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str = None):
-    print(f"Fetching item with id: {item_id} and query: {q}")
-    return {"item_id": item_id, "q": q}
+class ChatResponse(BaseModel):
+    response: str
+
+@app.get("/")
+async def get_status():
+    return {"status": "running"}
+
+@app.post("/chat", response_model=ChatResponse)
+async def chat(message: ChatMessage):
+    # Simulate processing the message (e.g., appending a response)
+    processed_message = f"Received your message: '{message.message}'. This is a response from the chatbot."
+    
+    # Return the processed message
+    return {"response": processed_message}
+
 

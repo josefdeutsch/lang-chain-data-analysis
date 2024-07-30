@@ -2,6 +2,8 @@
 name = "chat_api"
 version = "0.1"
 dependencies = [
+    "pydantic",
+    "asyncio",
     "fastapi",
     "uvicorn"
 ]
