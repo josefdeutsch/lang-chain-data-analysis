@@ -1,9 +1,11 @@
+import os
 from fastapi import FastAPI
 from pydantic import BaseModel
-from dotenv import load_dotenv
 from timeseries.cointegration import calculate_optimal_hedge_ratio_and_cadf
 
-load_dotenv()
+
+CHAT_API = os.getenv("CHAT_API", "http://chat_api:8031/chat")
+ANALYTICS = os.getenv("ANALYTICS", "http://analytics:8032/adf")
 
 app = FastAPI(
     title="Simple Chatbot",

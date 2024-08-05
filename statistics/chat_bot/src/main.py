@@ -1,12 +1,9 @@
 import os
 import requests
 import streamlit as st
-from dotenv import load_dotenv
 
-# Load environment variables from .env file
-load_dotenv()
-
-CHAT_API = os.getenv("CHAT_API")
+CHAT_API = os.getenv("CHAT_API", "http://chat_api:8031/chat")
+ANALYTICS = os.getenv("ANALYTICS", "http://analytics:8032/adf")
 
 st.title("Hospital System Chatbot")
 st.info("Ask me questions about patients, visits, insurance payers, hospitals, physicians, reviews, and wait times!")

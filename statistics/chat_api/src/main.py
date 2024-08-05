@@ -3,6 +3,7 @@ import requests
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from pydantic import BaseModel
+from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()

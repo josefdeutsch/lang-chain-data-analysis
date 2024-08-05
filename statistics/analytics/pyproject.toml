@@ -1,6 +1,6 @@
 [project]
 name = "analytics"
-version = "0.1"
+version = "0.4"
 dependencies = [
     "python-dotenv",
     "statsmodels",
