@@ -1,7 +1,12 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+
 [project]
 name = "chat_api"
 version = "0.4"
 dependencies = [
+    "langchain",
+    "langchain-openai",
     "python-dotenv",
     "requests==2.31.0",
     "pydantic",
@@ -12,3 +17,6 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["black", "flake8"]
+
+[tool.setuptools]
+packages = {find = {include = ["agents", "models", "tools", "utils"]}}
