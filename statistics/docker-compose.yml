@@ -4,6 +4,8 @@ services:
   analytics:
     build:
       context: ./analytics
+    env_file:
+      - .env
     ports:
       - "8032:8032"
     networks:
@@ -12,9 +14,10 @@ services:
   chat_api:
     build:
       context: ./chat_api
-
     depends_on:
       - analytics  
+    env_file:
+      - .env  
     ports:
       - "8031:8031"
     networks:
@@ -25,6 +28,8 @@ services:
       context: ./chat_bot
     depends_on:
       - chat_api
+    env_file:
+      - .env  
     ports:
       - "8501:8501"
     networks:
