@@ -1,6 +1,12 @@
-version: '3.9'
+version: '4.1'
 
 services:
+  neo4j_etl:
+    build:
+      context: ./neo4j_etl
+    env_file:
+      - .env
+  
   analytics:
     build:
       context: ./analytics
@@ -10,14 +16,16 @@ services:
       - "8032:8032"
     networks:
       - chatbot-network
+    depends_on:
+      - neo4j_etl
 
   chat_api:
     build:
       context: ./chat_api
     depends_on:
-      - analytics  
+      - analytics
     env_file:
-      - .env  
+      - .env
     ports:
       - "8031:8031"
     networks:
@@ -29,11 +37,12 @@ services:
     depends_on:
       - chat_api
     env_file:
-      - .env  
+      - .env
     ports:
       - "8501:8501"
     networks:
       - chatbot-network
+
 
 networks:
   chatbot-network:
