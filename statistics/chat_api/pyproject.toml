@@ -6,8 +6,12 @@ name = "chat_api"
 version = "0.4"
 dependencies = [
     "langchain",
+    "langchain-community",
     "langchain-openai",
+    "langchainhub",
     "python-dotenv",
+    "neo4j==5.14.1",
+    "numpy==1.26.2",
     "requests==2.31.0",
     "pydantic",
     "asyncio",
