@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from langchain.agents import AgentExecutor, create_openai_tools_agent, Tool
 from langchain import hub
 from langchain_openai import ChatOpenAI
-from tools.wrapper import stock_cypher_chain_exec,calculate_optimal_hedge_ratio_and_cadf,say_hello_to_analytics
+from tools.wrapper import cyper_stock_chain,calculate_optimal_hedge_ratio_and_cadf,calculate_hurst_exponent
 
 
 load_dotenv()
@@ -17,9 +17,9 @@ CHAT_API_MODEL = os.getenv("CHAT_API_MODEL")
 chat_api_prompt = hub.pull("hwchase17/openai-functions-agent")
 
 tools = [
-    stock_cypher_chain_exec,
+    cyper_stock_chain,
     calculate_optimal_hedge_ratio_and_cadf,
-    say_hello_to_analytics
+    calculate_hurst_exponent
 ]  
 
 chat_model = ChatOpenAI(
