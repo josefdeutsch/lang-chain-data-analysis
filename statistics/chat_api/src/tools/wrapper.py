@@ -63,15 +63,8 @@ def calculate_optimal_hedge_ratio_and_cadf(ts1: list, ts2: list) -> Any:
 @tool
 def calculate_hurst_exponent(ts1: list) -> Any:
     """
-    Useful for answering questions about optimal hedge ratios, residual analysis, 
-    and cointegration tests, the Hurst exponent provides critical insights into 
-    the behavior of time series data. To utilize this metric, consider the function 
-    calculate_hurst_exponent(ts), which computes the Hurst exponent for a given time series. 
-    This function is particularly beneficial for understanding long-term dependencies and 
-    mean reversion in financial data.
-   
-    If you need to determine the persistence or mean-reverting nature of a time series, 
-    simply input your data series as a list into the tool. For example, if the prompt is 
+    Useful for answering questions about Hurst component, and stationary tests. 
+    Use the entire prompt as input to the tool. For example, if the prompt is 
     "Calculate the Hurst exponent for my time series data," the input should be 
     "Calculate the Hurst exponent for my time series data."
 
