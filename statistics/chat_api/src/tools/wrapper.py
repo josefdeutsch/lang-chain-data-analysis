@@ -3,6 +3,7 @@ from typing import Any
 import requests
 import json
 from chains.stock_cypher_chain import stock_cypher_chain
+from tools.math.stat import calculate_optimal_hedge_ratio_and_cadfs
 from langchain.tools import tool
 from dotenv import load_dotenv
 
@@ -40,21 +41,24 @@ def stock_cypher_chain_exec(query: str) -> Any:
 
 
 @tool
-def calculate_optimal_hedge_ratio_and_cadf(ts1: list, ts2: list) -> Any:
+def calculate_optimal_hedge_ratio_and_cadf(ts1: list, ts2: list) -> Any: 
     """
     Useful for answering questions about optimal hedge ratios, residual analysis, and cointegration tests. 
     Use the entire prompt as input to the tool. For instance, if the prompt is "What is the optimal hedge ratio?", 
     the input should be "What is the optimal hedge ratio?". 
 
-    Args:
-        ts1 (list): List of closing prices related to the first stock.
-        ts2 (list): List of closing prices related to the second stock.
+    Parameters:
+        ts1 (list): List containing the first time series data.
+        ts2 (list): List containing the second time series data.
 
     Returns:
-        Any: The response from the requests.
+        dict: A dictionary containing:
+            - 'beta_hr' (float): The optimal hedge ratio.
+            - 'cadf' (tuple): The results of the CADF test on the residuals.
     """
-    print("insidewrapper")
-    return requests.post(ANALYTICS, {"message": {"ts1": ts1, "ts2": ts2}})
+
+    # Send the POST request with the original data dictionary
+    return calculate_optimal_hedge_ratio_and_cadfs(ts1,ts2)
 
 @tool
 def say_hello_to_analytics(input: str) -> Any:
@@ -68,4 +72,4 @@ def say_hello_to_analytics(input: str) -> Any:
     str: A message.
     """
     print("insidewrapper")
-    return requests.post(HELLO, json={"message": "hello from wrapper class chat api and and {input}"}).json()
+    return requests.post(HELLO, json={"message": ""}).json()
