@@ -10,7 +10,7 @@ app = FastAPI(
 )
 
 
-@async_retry(max_retries=10, delay=1)
+@async_retry(max_retries=20, delay=1)
 async def invoke_agent_with_retry(query: str):
     """
     Retry the agent if a tool fails to run. This can help when there

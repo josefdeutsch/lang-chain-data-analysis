@@ -57,6 +57,3 @@ def load_graph_from_csv(csv_path, node_label) -> None:
         """
         _ = session.run(query, {})
 
-if __name__ == "__main__":
-    load_graph_from_csv(BTCUSD_CSV_PATH, "BTCUSD")
-    load_graph_from_csv(ETHUSD_CSV_PATH, "ETHUSD")

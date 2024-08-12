@@ -1,12 +1,41 @@
-version: '4.1'
+version: '4.4'
 
 services:
+  neo4j:
+    build: ./neo4j-docker-setup
+    container_name: neo4j-apoc
+    environment:
+      NEO4J_AUTH: neo4j/password  # Username and password
+      NEO4J_dbms_security_procedures_unrestricted: apoc.*,algo.*
+      NEO4J_dbms_security_procedures_allowlist: apoc.*,algo.*
+      NEO4J_dbms_security_procedures_whitelist: apoc.*,algo.*
+      NEO4J_dbms_memory_pagecache_size: 2G
+      NEO4J_dbms_memory_heap_initial__size: 4G
+      NEO4J_dbms_memory_heap_max__size: 4G
+      apoc.metadata.enabled: true
+      apoc.export.file.enabled: "true"
+      apoc.import.file.enabled: "true"
+    volumes:
+      - ./neo4j-docker-setup/plugins:/plugins
+      - ./neo4j-docker-setup/import:/var/lib/neo4j/import
+    ports:
+      - 7474:7474
+      - 7687:7687
+      - 7473:7473
+    restart: unless-stopped
+    networks:
+      - neo4j-network
+  
   neo4j_etl:
     build:
       context: ./neo4j_etl
     env_file:
       - .env
-  
+    networks:
+      - neo4j-network
+    depends_on:
+      - neo4j
+
   analytics:
     build:
       context: ./analytics
@@ -15,7 +44,7 @@ services:
     ports:
       - "8032:8032"
     networks:
-      - chatbot-network
+      - neo4j-network
     depends_on:
       - neo4j_etl
 
@@ -29,7 +58,7 @@ services:
     ports:
       - "8031:8031"
     networks:
-      - chatbot-network
+      - neo4j-network
 
   chat_bot:
     build:
@@ -41,9 +70,9 @@ services:
     ports:
       - "8501:8501"
     networks:
-      - chatbot-network
+      - neo4j-network
 
 
 networks:
-  chatbot-network:
+  neo4j-network:
     driver: bridge
