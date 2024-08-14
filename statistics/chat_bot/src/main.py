@@ -22,14 +22,48 @@ with st.sidebar:
         """
     )
 
-   
+    st.header("Example Questions")
 
+    st.markdown("- What is the lowest recorded price for BTCUSD?")
+    st.markdown("- What is the highest recorded price for BTCUSD?")
+    st.markdown("- What is the average closing price of BTCUSD?")
+    st.markdown("- What is the total volume of BTCUSD traded?")
+    st.markdown("- What is the difference between the highest and lowest prices for each day from July 1, 2024, to August 1, 2024?")
+    st.markdown("- What is the percentage change between the opening and closing prices for each day from July 1, 2024, to August 1, 2024?")
+    st.markdown("- What is the median closing price of BTCUSD?")
+    st.markdown("- What is the range between the highest and lowest prices ever recorded for BTCUSD?")
+    st.markdown("- On which date was the trading volume for BTCUSD the highest?")
+    st.markdown("- What is the standard deviation of BTCUSD closing prices?")
+    st.markdown("- How many trading days are recorded in the dataset?")
+    st.markdown("- What is the cumulative return percentage from August 8, 2020, to August 15, 2020, for BTCUSD?")
+    st.markdown("- What is the average daily trading range (difference between the highest and lowest prices) for BTCUSD?")
+    st.markdown("- Which days between August 8, 2020, and August 15, 2020, had a closing price higher than the opening price for BTCUSD?")
+    st.markdown("- What is the 7-day rolling average of closing prices for BTCUSD from August 1st 2024 to August 7th 2024?")
+    st.markdown("- What is the highest adjusted closing price for BTCUSD between August 8, 2020, and August 15, 2020?")
+    st.markdown("- How many days had a trading volume greater than 25,000,000,000 for BTCUSD?")
+
+    
+
+
+    st.markdown("- What is the lowest recorded price for BTCUSD?")
+    st.markdown("- What is the highest recorded price for BTCUSD?")
+    st.markdown("- What is the average closing price of BTCUSD?")
+    st.markdown("- What is the total volume of BTCUSD traded?")
+    st.markdown("- What is the range between the highest and lowest prices ever recorded for BTCUSD?")
+    st.markdown("- What is the 7-day rolling average of closing prices for BTCUSD from August 1st 2024 to August 7th 2024?")
+    st.markdown("- What is the standard deviation of BTCUSD closing prices?")
+    st.markdown("- On which date was the trading volume for BTCUSD the highest?")
+    st.markdown("- Did Bitcoin's closing prices remain consistent without showing any clear trend between July 1, 2024, and August 1, 2024?")
+    st.markdown("- Are the closing prices of Bitcoin and Ethereum related, and do they move together over time between July 1, 2024, and August 1, 2024?")
 
 st.title("Stock Market Chatbot")
 st.info(
     """Feel free to ask me questions about Ethereum and Bitcoin data, including information on
       Date, Open, High, Low, Close, Adjusted Close, and Volume, up until August 8, 2020."""
 )
+
+
+
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
